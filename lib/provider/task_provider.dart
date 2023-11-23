@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/model/task_model.dart';
 
-class TasksProvider with ChangeNotifier {
+class TaskProvider with ChangeNotifier {
   List<TaskModel> _tasks = [];
   List<TaskModel> get tasks => _tasks;
 

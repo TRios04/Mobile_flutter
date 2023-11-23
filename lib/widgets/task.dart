@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lista_de_tarefas/provider/tasks_provider.dart';
+import 'package:lista_de_tarefas/provider/task_provider.dart';
 import 'package:provider/provider.dart';
 
 class Task extends StatelessWidget {
@@ -26,7 +26,7 @@ class Task extends StatelessWidget {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    Provider.of<TasksProvider>(context, listen: false)
+                    Provider.of<TaskProvider>(context, listen: false)
                         .deleteTask(id);
                   },
                   child: Icon(Icons.delete_forever_rounded)),

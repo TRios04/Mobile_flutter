@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/model/task_model.dart';
-import 'package:lista_de_tarefas/provider/tasks_provider.dart';
+import 'package:lista_de_tarefas/provider/task_provider.dart';
 import 'package:lista_de_tarefas/widgets/task.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'TODO tasks app',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -47,11 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<TasksProvider>(
-            create: (context) => (TasksProvider()))
+        ChangeNotifierProvider<TaskProvider>(
+            create: (context) => (TaskProvider()))
       ],
-      child: Consumer<TasksProvider>(
-        builder: (BuildContext context, TasksProvider value, Widget? child) =>
+      child: Consumer<TaskProvider>(
+        builder: (BuildContext context, TaskProvider value, Widget? child) =>
             Scaffold(
           appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     );
                   });
-              Provider.of<TasksProvider>(context, listen: false)
+              Provider.of<TaskProvider>(context, listen: false)
                   .addTask(TaskModel(id: _tasks, title: title));
             },
             tooltip: 'Increment',
