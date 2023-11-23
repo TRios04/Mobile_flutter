@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lista_de_tarefas/main.dart';
 import 'package:lista_de_tarefas/provider/task_provider.dart';
+import 'package:lista_de_tarefas/widgets/task.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
+
+import 'listview_one_task_test.mocks.dart';
 
 @GenerateMocks([TaskProvider])
 void main() {
   testWidgets("Should show one task, if one exists", (tester) async {
     MockTaskProvider mockTaskProvider = MockTaskProvider();
     
-    when(mockTaskProvider.tasks).thenReturn(tasks);
+    when(mockTaskProvider.tasks).thenReturn(Task);
 
     Widget myApp = MultiProvider(
       providers: [ChangeNotifierProvider<TaskProvider>(create: (_) => mockTaskProvider)],
